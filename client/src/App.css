@@ -13,15 +13,22 @@ body {
 }
 
 #root {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
+  background-color: black;
   background-size: cover;
   background-position: top;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: 1fr;
-  align-content: start;
+
   padding: 1rem;
+}
+article {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-content: start;
+}
+.flex {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 header {

@@ -1,7 +1,6 @@
-import type React from "react";
 import { useEffect, useState } from "react";
 
-interface ProgramProps {
+interface SeriesType {
   id: number;
   title: string;
   synopsis: string;
@@ -10,44 +9,35 @@ interface ProgramProps {
   year: number;
 }
 
-const ProgramsPage: React.FC = () => {
-  const [programs, setPrograms] = useState<ProgramProps[]>([]);
+function Programs() {
+  const [series, setSeries] = useState<SeriesType[] | null>();
 
   useEffect(() => {
-    const fetchPrograms = async () => {
-      try {
-        const response = await fetch("/api/programs");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setPrograms(data);
-      } catch (error) {
-        console.error("Error fetching programs:", error);
-      }
-    };
-
-    fetchPrograms();
-  }, []);
+    fetch("http://localhost:3310/api/programs")
+      .then((res) => res.json())
+      .then((data) => setSeries(data));
+  });
 
   return (
     <>
-      <h1>Page Programs</h1>
-      {programs.map((program) => (
-        <div key={program.id}>
-          <h2>{program.title}</h2>
-          <img
-            src={program.poster}
-            alt={program.title}
-            style={{ maxWidth: "200px" }}
-          />
-          <p>{program.synopsis}</p>
-          <p>Pays: {program.country}</p>
-          <p>Année: {program.year}</p>
-        </div>
-      ))}
+      <h1>Séries</h1>
+      <article>
+        {series
+          ? series.map((serie) => {
+              return (
+                <div key={serie.id} className="flex">
+                  <h2>Nom : {serie.title}</h2>
+                  <img src={serie.poster} alt={serie.poster} />
+                  <p>Synopsis : {serie.synopsis}</p>
+                  <p>Country : {serie.country}</p>
+                  <p>Year : {serie.year}</p>
+                </div>
+              );
+            })
+          : "pas de séries"}
+      </article>
     </>
   );
-};
+}
 
-export default ProgramsPage;
+export default Programs;
