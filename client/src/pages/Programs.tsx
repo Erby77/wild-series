@@ -21,21 +21,21 @@ function Programs() {
   return (
     <>
       <h1>Séries</h1>
-      {series
-        ? series.map((serie) => {
-            return (
-              <div key={serie.id}>
-                <p>Nom : {serie.title}</p>
-                <p>Synopsis : {serie.synopsis}</p>
-                <img src={serie.poster} alt={serie.poster} />
-                <p>
-                  Country : {serie.country} {serie.country}
-                </p>
-                <p>Year : {serie.year}</p>
-              </div>
-            );
-          })
-        : "pas de séries"}
+      <article>
+        {series
+          ? series.map((serie) => {
+              return (
+                <div key={serie.id} className="flex">
+                  <h2>Nom : {serie.title}</h2>
+                  <img src={serie.poster} alt={serie.poster} />
+                  <p>Synopsis : {serie.synopsis}</p>
+                  <p>Country : {serie.country}</p>
+                  <p>Year : {serie.year}</p>
+                </div>
+              );
+            })
+          : "pas de séries"}
+      </article>
     </>
   );
 }
