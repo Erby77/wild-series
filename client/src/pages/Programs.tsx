@@ -19,7 +19,7 @@ function Programs() {
   });
 
   return (
-    <div>
+    <>
       <h1>Séries</h1>
       {series
         ? series.map((serie) => {
@@ -36,7 +36,7 @@ function Programs() {
             );
           })
         : "pas de séries"}
-    </div>
+    </>
   );
 }
 
