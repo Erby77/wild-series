@@ -10,7 +10,7 @@ interface ProgramProps {
   year: number;
 }
 
-const ProgramsPage: React.FC = () => {
+const Programs: React.FC = () => {
   const [programs, setPrograms] = useState<ProgramProps[]>([]);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ const ProgramsPage: React.FC = () => {
   );
 };
 
-export default ProgramsPage;
+export default Programs;
