@@ -15,7 +15,7 @@ function Programs() {
   useEffect(() => {
     fetch("http://localhost:3310/api/programs")
       .then((res) => res.json())
-      .then((series) => setSeries(series));
+      .then((data) => setSeries(data));
   });
 
   return (
