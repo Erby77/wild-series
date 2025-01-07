@@ -26,11 +26,14 @@ function Programs() {
           ? series.map((serie) => {
               return (
                 <div key={serie.id} className="flex">
-                  <h2>Nom : {serie.title}</h2>
+                  <h2>{serie.title}</h2>
                   <img src={serie.poster} alt={serie.poster} />
-                  <p>Synopsis : {serie.synopsis}</p>
-                  <p>Country : {serie.country}</p>
-                  <p>Year : {serie.year}</p>
+                  <h3>Synopsis : </h3>
+                  <p>{serie.synopsis}</p>
+                  <h3>Country : </h3>
+                  <p>{serie.country}</p>
+                  <h3>Year : </h3>
+                  <p>{serie.year}</p>
                 </div>
               );
             })
